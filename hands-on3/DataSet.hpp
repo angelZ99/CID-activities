@@ -12,6 +12,5 @@ public:
     DataSet();
     std::vector<float> getX();
     std::vector<float> getY();
-
 };
 #endif

@@ -56,7 +56,7 @@ float DiscreteMaths::calcB1(std::vector<float> vect1, std::vector<float> vect2, 
     return b1;
 }
 
-float DiscreteMaths::calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b0)
+float DiscreteMaths::calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b1)
 {
     const float _x = sumX(vect1) / size;
     const float _y = sumY(vect2) / size;

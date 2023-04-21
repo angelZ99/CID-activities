@@ -19,7 +19,7 @@ public:
     float sumXsumY(std::vector<float>, std::vector<float>);
     float sumSqr(std::vector<float>);
     float calcB1(std::vector<float> vect1, std::vector<float> vect2, int size);
-    float calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b0);
+    float calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b1);
 };
 
 #endif

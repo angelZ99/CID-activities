@@ -49,17 +49,26 @@ float DiscreteMaths::sumSqr(std::vector<float> vect)
 
 float DiscreteMaths::calcB1(std::vector<float> vect1, std::vector<float> vect2, int size)
 {
-    const float nSumXY = size * sumXY(vect1, vect2);
-    const float nSumXY_SumXsumY = nSumXY - sumXsumY(vect1, vect2);
-    const float nSumSqr_SumXsumY = (size * sumSqr(vect1)) - (sumX(vect1) * sumX(vect1));
-    const float b1 = nSumXY_SumXsumY / nSumSqr_SumXsumY;
+    const float SSxx = sumSqr(vect1) - (1 / size * (sumX(vect1) * sumX(vect1)));
+    const float SSyy = sumSqr(vect2) - (1 / size * (sumX(vect2) * sumX(vect2)));
+    const float SSxy = sumXY(vect1, vect2) - (1 / size) * (sumX(vect1)) * (sumY(vect2));
+
+    const float b1 = SSxx / SSxy;
     return b1;
 }
 
-float DiscreteMaths::calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b0)
+float DiscreteMaths::calcB0(std::vector<float> vect1, std::vector<float> vect2, int size, float b1)
 {
     const float _x = sumX(vect1) / size;
     const float _y = sumY(vect2) / size;
-    const float b0 = _y - _x * b1;
+    const float b0 = _y - b1 * _x;
     return b0;
+}
+
+float DiscreteMaths::calcSSr(std::vector<float> vect1, std::vector<float> vect2, int size, float b1)
+{
+    const float SSxy = sumXY(vect1, vect2) - (1 / size) * (sumX(vect1)) * (sumY(vect2));
+
+    const float SSr = b1 * SSxy;
+    return SSr;
 }
